@@ -1,17 +1,19 @@
-#include <iostream>
-#include <list>
-using namespace std;
+import java.util.ArrayList;
 
-int main() {
-    list<int> numbers = {7, 15, 3, 22, 9};
-    int maxVal = *numbers.begin();
+public class MergeLists {
+    public static void main(String[] args) {
+        ArrayList<String> list1 = new ArrayList<>();
+        list1.add("А");
+        list1.add("Б");
+        list1.add("В");
 
-    for (int num : numbers) {
-        if (num > maxVal) {
-            maxVal = num;
-        }
+        ArrayList<String> list2 = new ArrayList<>();
+        list2.add("Г");
+        list2.add("Д");
+        list2.add("Е");
+
+        list1.addAll(list2);
+
+        System.out.println("Объединённый список: " + list1);
     }
-
-    cout << "Максимальный элемент списка: " << maxVal << endl;
-    return 0;
 }
