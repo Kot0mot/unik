@@ -1,0 +1,17 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    list<int> numbers = {7, 15, 3, 22, 9};
+    int maxVal = *numbers.begin();
+
+    for (int num : numbers) {
+        if (num > maxVal) {
+            maxVal = num;
+        }
+    }
+
+    cout << "Максимальный элемент списка: " << maxVal << endl;
+    return 0;
+}
