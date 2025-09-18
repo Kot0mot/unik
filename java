@@ -1,14 +1,14 @@
-#include <iostream>
-using namespace std;
+public class EvenCount {
+    public static void main(String[] args) {
+        int[] arr = {3, 8, 12, 5, 7, 10};
+        int count = 0;
 
-int main() {
-    int arr[5] = {2, 4, 6, 8, 10};
-    int sum = 0;
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                count++;
+            }
+        }
 
-    for (int i = 0; i < 5; i++) {
-        sum += arr[i];
+        System.out.println("Количество чётных чисел: " + count);
     }
-
-    cout << "Сумма элементов массива: " << sum << endl;
-    return 0;
 }
