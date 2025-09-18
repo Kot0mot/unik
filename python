@@ -1,14 +1,6 @@
-public class EvenCount {
-    public static void main(String[] args) {
-        int[] arr = {3, 8, 12, 5, 7, 10};
-        int count = 0;
+numbers = [10, 20, 30, 40, 50]
 
-        for (int num : arr) {
-            if (num % 2 == 0) {
-                count++;
-            }
-        }
+# Считаем сумму и делим на количество элементов
+avg = sum(numbers) / len(numbers)
 
-        System.out.println("Количество чётных чисел: " + count);
-    }
-}
+print("Среднее значение:", avg)
