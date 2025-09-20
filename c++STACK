@@ -1,17 +1,17 @@
 #include <iostream>
-#include <list>
+#include <stack>
 using namespace std;
 
 int main() {
-    list<int> numbers = {7, 15, 3, 22, 9};
-    int maxVal = *numbers.begin();
+    stack<char> st;
 
-    for (int num : numbers) {
-        if (num > maxVal) {
-            maxVal = num;
-        }
-    }
+    st.push('a');
+    st.push('b');
+    st.push('c');
 
-    cout << "Максимальный элемент списка: " << maxVal << endl;
+    cout << "Верхушка стека: " << st.top() << endl; // c
+    st.pop();
+    cout << "Теперь верхушка: " << st.top() << endl; // b
+
     return 0;
 }
