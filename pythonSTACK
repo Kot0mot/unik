@@ -1,6 +1,30 @@
-items = [1, 2, 2, 3, 4, 4, 5, 1, 6]
+class Stack:
+    def __init__(self):
+        self.items = []
 
-# Преобразуем в множество и обратно в список
-unique_items = list(set(items))
+    def push(self, item):
+        self.items.append(item)
 
-print("Список без дубликатов:", unique_items)
+    def pop(self):
+        if not self.items:
+            raise IndexError("pop from empty stack")
+        return self.items.pop()
+
+    def peek(self):
+        if not self.items:
+            raise IndexError("peek from empty stack")
+        return self.items[-1]
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+
+# Пример использования
+stack = Stack()
+stack.push('a')
+stack.push('b')
+stack.push('c')
+
+print("Верхушка стека:", stack.peek())  # c
+print("Извлекаем:", stack.pop())        # c
+print("Теперь верхушка:", stack.peek()) # b
