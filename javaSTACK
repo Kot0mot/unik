@@ -1,19 +1,15 @@
-import java.util.ArrayList;
+import java.util.Stack;
 
-public class MergeLists {
+public class Main {
     public static void main(String[] args) {
-        ArrayList<String> list1 = new ArrayList<>();
-        list1.add("А");
-        list1.add("Б");
-        list1.add("В");
+        Stack<String> stack = new Stack<>();
 
-        ArrayList<String> list2 = new ArrayList<>();
-        list2.add("Г");
-        list2.add("Д");
-        list2.add("Е");
+        stack.push("a");
+        stack.push("b");
+        stack.push("c");
 
-        list1.addAll(list2);
-
-        System.out.println("Объединённый список: " + list1);
+        System.out.println("Верхушка стека: " + stack.peek()); // c
+        System.out.println("Извлекаем: " + stack.pop());       // c
+        System.out.println("Теперь верхушка: " + stack.peek());// b
     }
 }
