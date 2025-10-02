@@ -1,0 +1,12 @@
+#include 
+#include 
+using namespace std;
+
+int main() {
+    unordered_map umap;
+    umap["Apple"] = 10;
+    umap["Mango"] = 20;
+    cout << umap["Apple"] << endl;  // 10
+    umap.erase("Mango");
+    return 0;
+}
