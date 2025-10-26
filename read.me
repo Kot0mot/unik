@@ -7,46 +7,6 @@
 
 ⸻
 
-Код (C++)
-
-#include <iostream>
-#include <vector>
-using namespace std;
-
-void selectionSort(vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 0; i < n - 1; i++) {
-        int minIndex = i;
-        for (int j = i + 1; j < n; j++) {
-            if (arr[j] < arr[minIndex])
-                minIndex = j;
-        }
-        if (minIndex != i)
-            swap(arr[i], arr[minIndex]);
-    }
-}
-
-void printArray(const vector<int>& arr) {
-    for (int num : arr)
-        cout << num << " ";
-    cout << endl;
-}
-
-int main() {
-    vector<int> arr = {29, 10, 14, 37, 13};
-    cout << "Исходный массив: ";
-    printArray(arr);
-
-    selectionSort(arr);
-
-    cout << "Отсортированный массив: ";
-    printArray(arr);
-    return 0;
-}
-
-
-⸻
-
 Объяснение
 
 Алгоритм делит массив на две области:
@@ -78,29 +38,6 @@ int main() {
 
 ⸻
 
-Код (Python)
-
-def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n - 1):
-        swapped = False
-        for j in range(n - i - 1):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-                swapped = True
-        if not swapped:
-            break  # массив уже отсортирован
-
-# Пример использования
-if __name__ == "__main__":
-    numbers = [5, 1, 4, 2, 8]
-    print("Исходный массив:", numbers)
-    bubble_sort(numbers)
-    print("Отсортированный массив:", numbers)
-
-
-⸻
-
 Объяснение
 
 Алгоритм повторно сравнивает пары соседних элементов и меняет их местами, если левый элемент больше правого.
@@ -127,30 +64,6 @@ if __name__ == "__main__":
 
 Сортировка вставками — это алгоритм, который формирует отсортированный массив постепенно, вставляя каждый новый элемент в правильное место среди уже упорядоченных.
 Принцип похож на то, как человек сортирует карты в руке.
-
-⸻
-
-Код (Python)
-
-def insertion_sort(arr):
-    for i in range(1, len(arr)):
-        key = arr[i]
-        j = i - 1
-
-        # Сдвигаем элементы, которые больше текущего
-        while j >= 0 and arr[j] > key:
-            arr[j + 1] = arr[j]
-            j -= 1
-
-        arr[j + 1] = key
-
-# Пример использования
-if __name__ == "__main__":
-    numbers = [12, 11, 13, 5, 6]
-    print("Исходный массив:", numbers)
-    insertion_sort(numbers)
-    print("Отсортированный массив:", numbers)
-
 
 ⸻
 
@@ -185,58 +98,6 @@ if __name__ == "__main__":
 
 ⸻
 
-Код (C++)
-
-#include <iostream>
-#include <vector>
-using namespace std;
-
-void merge(vector<int>& arr, int left, int mid, int right) {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-    vector<int> L(n1), R(n2);
-
-    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
-    for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
-
-    int i = 0, j = 0, k = left;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j])
-            arr[k++] = L[i++];
-        else
-            arr[k++] = R[j++];
-    }
-    while (i < n1) arr[k++] = L[i++];
-    while (j < n2) arr[k++] = R[j++];
-}
-
-void mergeSort(vector<int>& arr, int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
-    }
-}
-
-int main() {
-    vector<int> arr = {38, 27, 43, 3, 9, 82, 10};
-    cout << "Исходный массив: ";
-    for (int x : arr) cout << x << " ";
-    cout << endl;
-
-    mergeSort(arr, 0, arr.size() - 1);
-
-    cout << "Отсортированный массив: ";
-    for (int x : arr) cout << x << " ";
-    cout << endl;
-
-    return 0;
-}
-
-
-⸻
-
 Объяснение
 
 Массив делится на две части, каждая из которых сортируется отдельно.
@@ -263,34 +124,6 @@ int main() {
 
 Сортировка Шелла — это улучшенная версия сортировки вставками.
 Вместо сравнения соседних элементов она начинает с элементов, находящихся на определённом расстоянии (gap), постепенно уменьшая этот шаг, пока не дойдёт до обычной сортировки вставками при gap = 1.
-
-⸻
-
-Код (Python)
-
-def shell_sort(arr):
-    n = len(arr)
-    gap = n // 2  # начальный шаг
-
-    while gap > 0:
-        for i in range(gap, n):
-            temp = arr[i]
-            j = i
-
-            # сортировка подмножеств элементов с шагом gap
-            while j >= gap and arr[j - gap] > temp:
-                arr[j] = arr[j - gap]
-                j -= gap
-            arr[j] = temp
-
-        gap //= 2  # уменьшаем шаг
-
-# Пример использования
-if __name__ == "__main__":
-    data = [12, 34, 54, 2, 3]
-    print("Исходный массив:", data)
-    shell_sort(data)
-    print("Отсортированный массив:", data)
 
 
 ⸻
@@ -321,55 +154,6 @@ if __name__ == "__main__":
 
 Быстрая сортировка — один из самых эффективных алгоритмов сортировки.
 Работает по принципу “разделяй и властвуй”: выбирает опорный элемент (pivot), делит массив на элементы меньше и больше него, а затем рекурсивно сортирует обе части.
-
-⸻
-
-Код (C++)
-
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int partition(vector<int>& arr, int low, int high) {
-    int pivot = arr[high]; // опорный элемент
-    int i = low - 1;
-
-    for (int j = low; j < high; j++) {
-        if (arr[j] < pivot) {
-            i++;
-            swap(arr[i], arr[j]);
-        }
-    }
-    swap(arr[i + 1], arr[high]);
-    return i + 1;
-}
-
-void quickSort(vector<int>& arr, int low, int high) {
-    if (low < high) {
-        int pi = partition(arr, low, high);
-
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
-    }
-}
-
-void printArray(const vector<int>& arr) {
-    for (int x : arr) cout << x << " ";
-    cout << endl;
-}
-
-int main() {
-    vector<int> arr = {10, 7, 8, 9, 1, 5};
-    cout << "Исходный массив: ";
-    printArray(arr);
-
-    quickSort(arr, 0, arr.size() - 1);
-
-    cout << "Отсортированный массив: ";
-    printArray(arr);
-    return 0;
-}
-
 
 ⸻
 
@@ -404,66 +188,6 @@ int main() {
 
 ⸻
 
-Код (C++)
-
-#include <iostream>
-#include <vector>
-using namespace std;
-
-// Функция для поддержания свойства кучи
-void heapify(vector<int>& arr, int n, int i) {
-    int largest = i;       
-    int left = 2 * i + 1;  
-    int right = 2 * i + 2; 
-
-    if (left < n && arr[left] > arr[largest])
-        largest = left;
-
-    if (right < n && arr[right] > arr[largest])
-        largest = right;
-
-    if (largest != i) {
-        swap(arr[i], arr[largest]);
-        heapify(arr, n, largest);
-    }
-}
-
-// Основная функция сортировки
-void heapSort(vector<int>& arr) {
-    int n = arr.size();
-
-    // Построение max-heap
-    for (int i = n / 2 - 1; i >= 0; i--)
-        heapify(arr, n, i);
-
-    // Извлечение элементов из кучи
-    for (int i = n - 1; i > 0; i--) {
-        swap(arr[0], arr[i]); // перемещаем корень в конец
-        heapify(arr, i, 0);   // восстанавливаем свойство кучи
-    }
-}
-
-void printArray(const vector<int>& arr) {
-    for (int num : arr) cout << num << " ";
-    cout << endl;
-}
-
-int main() {
-    vector<int> arr = {12, 11, 13, 5, 6, 7};
-
-    cout << "Исходный массив: ";
-    printArray(arr);
-
-    heapSort(arr);
-
-    cout << "Отсортированный массив: ";
-    printArray(arr);
-    return 0;
-}
-
-
-⸻
-
 Объяснение
  1. Сначала строится max-куча, чтобы на вершине оказался самый большой элемент.
  2. Затем этот элемент перемещается в конец массива.
@@ -493,27 +217,6 @@ int main() {
 
 ⸻
 
-Код (Python)
-
-def linear_search(arr, target):
-    for i in range(len(arr)):
-        if arr[i] == target:
-            return i  # возвращаем индекс найденного элемента
-    return -1  # если элемент не найден
-
-# Пример использования
-if __name__ == "__main__":
-    numbers = [4, 2, 7, 1, 9, 5]
-    x = 7
-    result = linear_search(numbers, x)
-    if result != -1:
-        print(f"Элемент {x} найден на позиции {result}")
-    else:
-        print(f"Элемент {x} не найден в списке")
-
-
-⸻
-
 Объяснение
 
 Алгоритм проверяет элементы массива последовательно:
@@ -540,44 +243,6 @@ if __name__ == "__main__":
 
 Бинарный поиск — это эффективный алгоритм поиска элемента в отсортированном массиве.
 Он многократно делит диапазон поиска пополам, сравнивая искомый элемент со значением в середине диапазона.
-
-⸻
-
-Код (C++)
-
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int binarySearch(const vector<int>& arr, int target) {
-    int left = 0, right = arr.size() - 1;
-
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-
-        if (arr[mid] == target)
-            return mid;
-        else if (arr[mid] < target)
-            left = mid + 1;
-        else
-            right = mid - 1;
-    }
-    return -1;
-}
-
-int main() {
-    vector<int> data = {2, 4, 6, 8, 10, 12, 14};
-    int x = 10;
-
-    int result = binarySearch(data, x);
-    if (result != -1)
-        cout << "Элемент найден на позиции: " << result << endl;
-    else
-        cout << "Элемент не найден." << endl;
-
-    return 0;
-}
-
 
 ⸻
 
@@ -611,41 +276,6 @@ int main() {
 
 ⸻
 
-Код (Python)
-
-def interpolation_search(arr, target):
-    low, high = 0, len(arr) - 1
-
-    while low <= high and target >= arr[low] and target <= arr[high]:
-        if low == high:
-            if arr[low] == target:
-                return low
-            return -1
-
-        # Вычисляем позицию предполагаемого элемента
-        pos = low + int(((target - arr[low]) * (high - low)) / (arr[high] - arr[low]))
-
-        if arr[pos] == target:
-            return pos
-        elif arr[pos] < target:
-            low = pos + 1
-        else:
-            high = pos - 1
-    return -1
-
-# Пример использования
-if __name__ == "__main__":
-    data = [10, 20, 30, 40, 50, 60, 70, 80]
-    x = 60
-    result = interpolation_search(data, x)
-    if result != -1:
-        print(f"Элемент найден на позиции {result}")
-    else:
-        print("Элемент не найден")
-
-
-⸻
-
 Объяснение
 
 Вместо деления диапазона пополам, как в бинарном поиске,
@@ -673,61 +303,6 @@ if __name__ == "__main__":
 
 Поиск Фибоначчи — это алгоритм поиска элемента в отсортированном массиве, который использует числа Фибоначчи для определения границ подмассива, где может находиться искомое значение.
 Он схож с бинарным поиском, но использует деление в пропорции чисел Фибоначчи, что делает его особенно удобным для массивов, хранящихся в последовательной памяти (например, на ленте).
-
-⸻
-
-Код (Python)
-
-def fibonacci_search(arr, target):
-    n = len(arr)
-    
-    # Инициализация чисел Фибоначчи
-    fibMMm2 = 0  # (m-2)'е число Фибоначчи
-    fibMMm1 = 1  # (m-1)'е число Фибоначчи
-    fibM = fibMMm1 + fibMMm2  # m'ое число Фибоначчи
-
-    # Находим минимальное число Фибоначчи >= n
-    while fibM < n:
-        fibMMm2 = fibMMm1
-        fibMMm1 = fibM
-        fibM = fibMMm1 + fibMMm2
-
-    offset = -1  # Смещение от начала массива
-
-    # Поиск
-    while fibM > 1:
-        i = min(offset + fibMMm2, n - 1)
-
-        if arr[i] < target:
-            fibM = fibMMm1
-            fibMMm1 = fibMMm2
-            fibMMm2 = fibM - fibMMm1
-            offset = i
-        elif arr[i] > target:
-            fibM = fibMMm2
-            fibMMm1 = fibMMm1 - fibMMm2
-            fibMMm2 = fibM - fibMMm1
-        else:
-            return i  # элемент найден
-
-    # Проверка последнего возможного элемента
-    if fibMMm1 and offset + 1 < n and arr[offset + 1] == target:
-        return offset + 1
-
-    return -1
-
-
-# Пример использования
-if __name__ == "__main__":
-    data = [10, 22, 35, 40, 45, 50, 80, 85, 90, 100]
-    x = 85
-    index = fibonacci_search(data, x)
-
-    if index != -1:
-        print(f"Элемент найден на позиции {index}")
-    else:
-        print("Элемент не найден")
-
 
 ⸻
 
